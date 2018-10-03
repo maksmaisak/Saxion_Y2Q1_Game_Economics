@@ -1,0 +1,49 @@
+<graph version="v4.3" name="Prison" author="" interval="1" timeMode="turn-based" distributionMode="instantaneous" speed="100" actions="1" dice="D6" skill="" strategy="" multiplayer="" width="1200" height="1024" numberOfRuns="100" visibleRuns="25" colorCoding="0">
+  <connection type="Resource Connection" start="19" end="2" label="" position="0.5" color="Red" thickness="2"/>
+  <connection type="State Connection" start="18" end="2" label=">=5" position="0.5" color="Black" thickness="2"/>
+  <node symbol="Drain" x="280" y="160" color="Red" caption="Hunger damage" thickness="2" captionPos="0.25" activationMode="automatic" pullMode="pull any" actions="1"/>
+  <node symbol="Source" x="80" y="240" color="Black" caption="" thickness="2" captionPos="0.25" activationMode="automatic" pullMode="pull any" actions="1" resourceColor="Black"/>
+  <node symbol="Source" x="280" y="320" color="Red" caption="Regenerate health" thickness="2" captionPos="0.25" activationMode="automatic" pullMode="push any" actions="1" resourceColor="Red"/>
+  <connection type="Resource Connection" start="23" end="24" label="" position="0.5" color="Green" thickness="2"/>
+  <connection type="Resource Connection" start="4" end="19" label="0.5" position="0.26" color="Red" thickness="2"/>
+  <connection type="State Connection" start="19" end="4" label="&lt;10" position="0.5" color="Red" thickness="2">
+    <point x="280" y="240"/>
+  </connection>
+  <connection type="State Connection" start="31" end="11" label="&lt;95" position="0.5" color="Black" thickness="2"/>
+  <connection type="Resource Connection" start="24" end="19" label="" position="0.5" color="Red" thickness="2">
+    <point x="400" y="400"/>
+  </connection>
+  <node symbol="Drain" x="560" y="240" color="Black" caption="Get Beaten Up" thickness="2" captionPos="0.25" activationMode="passive" pullMode="pull any" actions="1"/>
+  <node symbol="Gate" x="560" y="120" color="Black" caption="" thickness="2" captionPos="0.25" activationMode="automatic" pullMode="pull any" actions="1" gateType="dice"/>
+  <connection type="State Connection" start="11" end="10" label="20%" position="-0.5" color="Black" thickness="2"/>
+  <node symbol="GroupBox" x="40" y="120" color="Black" caption="Food &amp; Hunger" width="320" height="480" captionPos="7"/>
+  <node symbol="EndCondition" x="400" y="40" color="Black" caption="Lose" thickness="2" captionPos="0.75" activationMode="passive" pullMode="pull any" actions="1"/>
+  <connection type="State Connection" start="19" end="14" label="==0" position="0.5" color="Red" thickness="2"/>
+  <connection type="Resource Connection" start="31" end="10" label="" position="0.5" color="Black" thickness="2"/>
+  <connection type="Resource Connection" start="27" end="31" label="" position="0.5" color="Black" thickness="2"/>
+  <node symbol="Pool" x="160" y="240" color="Black" caption="Hunger" thickness="2" captionPos="0.25" activationMode="passive" pullMode="push any" actions="1" resourceColor="Black" startingResources="0" capacity="10" displayCapacity="0"/>
+  <node symbol="Pool" x="400" y="240" color="Red" caption="Health" thickness="2" captionPos="0.25" activationMode="passive" pullMode="pull any" actions="1" resourceColor="Red" startingResources="8" capacity="10" displayCapacity="0"/>
+  <connection type="Resource Connection" start="3" end="18" label="0.5" position="0.5" color="Black" thickness="2"/>
+  <connection type="Resource Connection" start="18" end="24" label="all" position="0.5" color="Black" thickness="2">
+    <point x="160" y="400"/>
+  </connection>
+  <connection type="State Connection" start="18" end="4" label="&lt;5" position="0.5" color="Black" thickness="2"/>
+  <node symbol="Pool" x="280" y="520" color="Green" caption="Food" thickness="2" captionPos="0.25" activationMode="passive" pullMode="push any" actions="1" resourceColor="Green" startingResources="100" capacity="-1" displayCapacity="0"/>
+  <node symbol="Converter" x="280" y="440" color="Green" caption="Eat" thickness="2" captionPos="0.25" activationMode="interactive" pullMode="pull all" actions="1" resourceColor="Black"/>
+  <node symbol="Gate" x="561" y="440" color="Black" caption="Skip turn" thickness="2" captionPos="0.25" activationMode="interactive" pullMode="pull any" actions="1" gateType="deterministic"/>
+  <node symbol="GroupBox" x="480" y="40" color="Black" caption="Reputation" width="480" height="280" captionPos="7"/>
+  <node symbol="Source" x="800" y="200" color="Black" caption="Interact with inmates" thickness="2" captionPos="0.25" activationMode="interactive" pullMode="pull any" actions="1" resourceColor="Black"/>
+  <connection type="State Connection" start="-1" end="35" label=">150" position="0.5" color="Black" thickness="2">
+    <point x="NaN" y="127"/>
+  </connection>
+  <node symbol="EndCondition" x="920" y="120" color="Black" caption="Win" thickness="2" captionPos="0.25" activationMode="passive" pullMode="pull any" actions="1"/>
+  <connection type="State Connection" start="31" end="29" label=">150" position="0.5" color="Black" thickness="2"/>
+  <node symbol="Pool" x="680" y="120" color="Black" caption="ReputationInmates" thickness="2" captionPos="0.75" activationMode="passive" pullMode="push any" actions="1" resourceColor="Black" startingResources="80" capacity="-1" displayCapacity="0"/>
+  <connection type="State Connection" start="31" end="12" label="-1" position="0.5" color="Black" thickness="2">
+    <point x="635" y="145"/>
+  </connection>
+  <connection type="Resource Connection" start="19" end="10" label="4" position="0.5" color="Red" thickness="2"/>
+  <node symbol="ArtificialPlayer" x="640" y="440" color="Black" caption="Player" thickness="2" captionPos="0.25" activationMode="automatic" pullMode="pull any" actions="0" actionsPerTurn="1">fireRandom(Eat, Interact with inmates)</node>
+  <connection type="State Connection" start="36" end="34" label="" position="0.5" color="Black" thickness="2"/>
+  <node symbol="Gate" x="640" y="360" color="Black" caption="" thickness="2" captionPos="0.25" activationMode="onstart" pullMode="pull any" actions="1" gateType="deterministic"/>
+</graph>
